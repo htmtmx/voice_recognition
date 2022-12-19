@@ -3,7 +3,7 @@ const btnStop = document.getElementById("btn_stop");
 
 let Recorder = window.webkitSpeechRecognition  || window.SpeechRecognitionEvent;
 let recognition = new Recorder();
-console.log(recognition);
+// console.log(recognition);
 
 recognition.lang = 'es-ES';
 recognition.continuous = true;
@@ -33,8 +33,8 @@ recognition.onresult = (event) => {
   const results = event.results;
   let phrase = results[results.length - 1][0].transcript.split(" ").join("");
   drawScreen(phrase);
-  console.log(phrase);
-  console.log(results);
+  // console.log(phrase);
+  // console.log(results);
 }
 
 btnRecord.addEventListener('click', () => {
