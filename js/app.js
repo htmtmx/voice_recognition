@@ -13,7 +13,15 @@ const body = document.querySelector('body');
 let colorSaved;
 const drawScreen = (phrase) => { 
   let color;
-  if (phrase=="Rojo.") color = "red";
+  if (phrase == 'Rojo.' || phrase == 'rojo') color = 'red';
+  if (phrase == 'Verde.' || phrase == 'verde') color = 'green';
+  if (phrase == 'Azul.' || phrase == 'azul') color = 'blue';
+  if (phrase == 'Amarillo.' || phrase == 'amarillo') color = 'yellow';
+  if (phrase == 'Naranja.' || phrase == 'naranja') color = 'orange';
+  if (phrase == 'Morado.' || phrase == 'morado') color = 'purple';
+  if (phrase == 'Blanco.' || phrase == 'blanco') color = 'white';
+  if (phrase == 'Negro.' || phrase == 'negro') color = 'black';
+  document.body.style.backgroundColor = color;
 }
 
 // Event
@@ -23,9 +31,10 @@ recognition.onStart = () => {
 
 recognition.onresult = (event) => { 
   const results = event.results;
-  console.log(event);
-  // const phrase = results[results.length - 1][0].transcript;
-  // drawScreen(transcript);
+  let phrase = results[results.length - 1][0].transcript.split(" ").join("");
+  drawScreen(phrase);
+  console.log(phrase);
+  console.log(results);
 }
 
 btnRecord.addEventListener('click', () => {
