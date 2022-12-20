@@ -10,7 +10,6 @@ recognition.continuous = true;
 
 // Start recording
 const body = document.querySelector('body');
-let colorSaved;
 const drawScreen = (phrase) => { 
   let color;
   if (phrase == 'Rojo.' || phrase == 'rojo') color = 'red';
@@ -21,8 +20,18 @@ const drawScreen = (phrase) => {
   if (phrase == 'Morado.' || phrase == 'morado') color = 'purple';
   if (phrase == 'Blanco.' || phrase == 'blanco') color = 'white';
   if (phrase == 'Negro.' || phrase == 'negro') color = 'black';
+  if (color === undefined) color = 'cyan';
+  localStorage.setItem('currentColor', color);
+
   document.body.style.backgroundColor = color;
 }
+
+// Persistent data in localStorage
+window.addEventListener('DOMContentLoaded', () => {
+  let colorSaved = localStorage.currentColor;
+  console.log(colorSaved);
+    document.body.style.backgroundColor = colorSaved;
+})
 
 // Event
 recognition.onStart = () => { 
