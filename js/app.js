@@ -22,13 +22,14 @@ const drawScreen = (phrase) => {
   if (phrase == 'Negro.' || phrase == 'negro') color = 'black';
   if (color === undefined) color = 'cyan';
   localStorage.setItem('currentColor', color);
+  sessionStorage.setItem('currentColor', color);
 
   document.body.style.backgroundColor = color;
 }
 
 // Persistent data in localStorage
 window.addEventListener('DOMContentLoaded', () => {
-  let colorSaved = localStorage.currentColor;
+  let colorSaved = localStorage.currentColor || sessionStorage.currentColor;
   console.log(colorSaved);
     document.body.style.backgroundColor = colorSaved;
 })
